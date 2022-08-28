@@ -1,8 +1,9 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import {CounterReducer} from '../redux/reducers'
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from "../redux/features/couterSlice"
 
 
-const store = createStore(CounterReducer, composeEnhancers(applyMiddleware()))
+const store = configureStore({
+  reducer: counterReducer,
+})
+
 export default store

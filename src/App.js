@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useSelector,useDispatch } from 'react-redux'
-import {Increment,Decrement,IncrementByValue} from './redux/actions'
+// import {Increment,Decrement,IncrementByValue} from './redux/actions'
+import { Increment, Decrement, IncrementByValue } from './redux/features/couterSlice';
 import './App.css'
 
 function App() {
