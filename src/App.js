@@ -5,7 +5,7 @@ import { Increment, Decrement, IncrementByValue } from './redux/features/couterS
 import './App.css'
 
 function App() {
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState(10)
   const count = useSelector((state) => state.count)
   const dispatch = useDispatch()
   return (
