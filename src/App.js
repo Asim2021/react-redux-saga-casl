@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   Increment,
@@ -13,10 +13,6 @@ function App() {
   const count = useSelector((state) => state.counter.count)
   const users = useSelector((state) => state.users.users)
   const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(getUsers())
-  // }, [])
 
   return (
     <div className='App'>
@@ -41,16 +37,21 @@ function App() {
       <br />
       <button onClick={() => dispatch(getUsers())}>Get Users Name</button>
       <br />
-      {
-        users?.length ? 
-        (users?.map(user=>{
-          return <li key={user.id}>{user.name}</li>
-        }))
-        :
-        ""
-      }
+      <GetUserNames users={users} color="blue" />
     </div>
   )
 }
 
 export default App
+
+const GetUserNames = ({ users,color}) => {
+  return (
+    <div style={{color:color,margin:"20px"}}>
+      {users?.length
+        ? users?.map((user) => {
+            return <li key={user.id}>{user.name}</li>
+          })
+        : ''}
+    </div>
+  )
+}
