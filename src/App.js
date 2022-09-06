@@ -10,6 +10,7 @@ import './App.css'
 
 function App() {
   const [value, setValue] = useState(10)
+  const [color, setColor] = useState("")
   const count = useSelector((state) => state.counter.count)
   const users = useSelector((state) => state.users.users)
   const dispatch = useDispatch()
@@ -35,16 +36,27 @@ function App() {
         Add By Value
       </button>
       <br />
-      <button onClick={() => dispatch(getUsers())}>Get Users Name</button>
+      <h1 style={{ color: 'red' }}>FETCH USER</h1>
+      <input
+        type='text'
+        placeholder='Enter Text Color'
+        value={color}
+        onChange={(e) => {
+          setColor(e.target.value)
+        }}
+      />
+      <button onClick={() => dispatch(getUsers())}>
+        Fetch Users
+      </button>
       <br />
-      <GetUserNames users={users} color="blue" />
+      <GetUserNames users={users} color={color} />
     </div>
   )
 }
 
 export default App
 
-const GetUserNames = ({ users,color}) => {
+const GetUserNames = ({ users,color="black"}) => {
   return (
     <div style={{color:color,margin:"20px"}}>
       {users?.length
